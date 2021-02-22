@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="first_string">Hello Kate!</string>
+    <string name="got_text">Got text:</string>
+    <string name="send">Send</string>
+    <string name="change">change</string>
+</resources>
