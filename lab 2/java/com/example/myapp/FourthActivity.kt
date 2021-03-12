@@ -23,16 +23,17 @@ class FourthActivity : AppCompatActivity() {
         val image = intent.getIntExtra("image",0)
         binding.image.setImageResource(image)
         val ingredients = getIntent().getSerializableExtra("ingredients")
-        val myAdapter = MyAdapter4(ingredients as ArrayList<String>, this)
+        val myAdapter = MyAdapter4(ingredients as ArrayList<String>)
         binding.ingredients.layoutManager = LinearLayoutManager(this)
         binding.ingredients.adapter = myAdapter
         val description = intent.getStringArrayListExtra("description")
-        val adapter = MyAdapter4Recipe(description as ArrayList<String>, this)
+        val adapter = MyAdapter4Recipe(description as ArrayList<String>)
         binding.recipe.layoutManager = LinearLayoutManager(this)
         binding.recipe.adapter = adapter
-    }
-    fun back(view: View){
-        val newIntent = Intent(this, MainActivity::class.java)
-        startActivity(newIntent)
+
+        binding.imageButton.setOnClickListener {
+            val newIntent = Intent(this, MainActivity::class.java)
+            startActivity(newIntent)
+        }
     }
 }

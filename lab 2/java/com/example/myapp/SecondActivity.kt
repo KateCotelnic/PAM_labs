@@ -22,18 +22,14 @@ class SecondActivity : AppCompatActivity() {
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = myAdapter
-    }
 
-    fun my_recipes(view: View) {
-        val newIntent = Intent(this, MainActivity::class.java)
-        startActivity(newIntent)
-    }
-
-    fun all_recipes(view: View) {
-    }
-
-    fun new_button(view: View) {
-        val newIntent = Intent(this, ThirdActivity::class.java)
-        startActivityForResult(newIntent, 0)
+        binding.myRecipes.setOnClickListener {
+            val newIntent = Intent(this, MainActivity::class.java)
+            startActivity(newIntent)
+        }
+        binding.add.setOnClickListener {
+            val newIntent = Intent(this, ThirdActivity::class.java)
+            startActivityForResult(newIntent, 0)
+        }
     }
 }

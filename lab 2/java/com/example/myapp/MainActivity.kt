@@ -23,19 +23,15 @@ class MainActivity : AppCompatActivity() {
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = myAdapter
-    }
 
-    fun my_recipes(view: View){
+        binding.allRecipes.setOnClickListener {
+            val newIntent = Intent(this, SecondActivity::class.java)
+            startActivity(newIntent)
+        }
 
-    }
-
-    fun all_recipes(view: View){
-        val newIntent = Intent(this, SecondActivity::class.java)
-        startActivity(newIntent)
-    }
-
-    fun new_button(view: View){
-        val newIntent = Intent(this, ThirdActivity::class.java)
-        startActivityForResult(newIntent, 0)
+        binding.add.setOnClickListener {
+            val newIntent = Intent(this, ThirdActivity::class.java)
+            startActivityForResult(newIntent, 0)
+        }
     }
 }

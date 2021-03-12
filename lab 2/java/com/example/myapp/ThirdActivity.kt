@@ -33,10 +33,9 @@ class ThirdActivity : AppCompatActivity() {
                 type = options.get(position)
             }
         }
-    }
-
-    fun save(view: View){
-        val newIntent = Intent(this, MainActivity::class.java)
-        startActivity(newIntent)
+        binding.save.setOnClickListener {
+            val newIntent = Intent(this, MainActivity::class.java)
+            startActivity(newIntent)
+        }
     }
 }
