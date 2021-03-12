@@ -8,25 +8,23 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapp.databinding.RowAllBinding
+import com.example.myapp.databinding.RowMyBinding
 
 class MyAdapterMy(val arrayList: ArrayList<Recipe>, val context: Context):
     RecyclerView.Adapter<MyAdapterMy.ViewHolder>() {
 
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    class ViewHolder(val binding: RowMyBinding): RecyclerView.ViewHolder(binding.root){
 
         fun bindItems(recipe: Recipe){
-            val title: TextView = itemView.findViewById(R.id.name) as TextView
-            title.setText(recipe.name)
-            val description: TextView = itemView.findViewById(R.id.type) as TextView
-            description.text = recipe.type
-            val image: ImageView = itemView.findViewById(R.id.image) as ImageView
-            image.setImageResource(recipe.image)
+            binding.name.setText(recipe.name)
+            binding.type.text = recipe.type
+            binding.image.setImageResource(recipe.image)
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.row_my,parent,false)
-        return ViewHolder(v)
+        return ViewHolder(RowMyBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun getItemCount(): Int {

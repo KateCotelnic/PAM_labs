@@ -8,15 +8,16 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapp.databinding.IngredientBinding
+import com.example.myapp.databinding.RecipeDescriptionBinding
 
-class MyAdapter4Recipe(val arrayList: ArrayList<String>, val context: Context):
+class MyAdapter4Recipe(val arrayList: ArrayList<String>):
         RecyclerView.Adapter<MyAdapter4Recipe.ViewHolder>() {
 
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    inner class ViewHolder(val binding: RecipeDescriptionBinding): RecyclerView.ViewHolder(binding.root){
         var i = 0
         fun bindItems(description: String){
-            val desc = itemView.findViewById(R.id.recipe_description_text) as? TextView
-            println("current ingredient:" + description)
+            val desc = binding.recipeDescriptionText
             if (desc != null) {
                 i++
                 desc.setText("$i) $description")
@@ -25,8 +26,7 @@ class MyAdapter4Recipe(val arrayList: ArrayList<String>, val context: Context):
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.recipe_description,parent,false)
-        return ViewHolder(v)
+        return ViewHolder(RecipeDescriptionBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
 
     override fun getItemCount(): Int {

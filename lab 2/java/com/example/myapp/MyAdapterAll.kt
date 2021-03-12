@@ -10,27 +10,23 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapp.databinding.RecipeDescriptionBinding
+import com.example.myapp.databinding.RowAllBinding
 
 class MyAdapterAll(val arrayList: ArrayList<Recipe>, val context: Context):
         RecyclerView.Adapter<MyAdapterAll.ViewHolder>() {
 
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-
-        val title: TextView = itemView.findViewById(R.id.name) as TextView
-        val description: TextView = itemView.findViewById(R.id.type) as TextView
-        val image: ImageView = itemView.findViewById(R.id.image) as ImageView
+    class ViewHolder(val binding: RowAllBinding): RecyclerView.ViewHolder(binding.root){
 
         fun bindItems(recipe: Recipe){
-            title.setText(recipe.name)
-            description.text = recipe.type
-            image.setImageResource(recipe.image)
+            binding.name.setText(recipe.name)
+            binding.type.text = recipe.type
+            binding.image.setImageResource(recipe.image)
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.row_all,parent,false)
-        return ViewHolder(v)
+        return ViewHolder(RowAllBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
 
     override fun getItemCount(): Int {
