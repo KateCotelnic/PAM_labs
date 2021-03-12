@@ -1,5 +1,4 @@
 package com.example.myapp
-//import android.R
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -24,19 +23,15 @@ class MainActivity : AppCompatActivity() {
         val myToast = Toast.makeText(this, "changed!", Toast.LENGTH_SHORT)
         val textView: TextView = findViewById(R.id.textView) as TextView
         val string = textView.text.toString().substringBefore(" ") + " Marry!"
-//        println("string = " + string)
         textView.setText(string)
         myToast.show()
     }
 
     fun send(view: View){
-//        val myToast = Toast.makeText(this, "sent!", Toast.LENGTH_SHORT)
-//        myToast.show();
         val textView: TextView = findViewById(R.id.textView) as TextView
         val string = textView.text.toString()
         val newIntent = Intent(this, SecondActivity::class.java)
         newIntent.putExtra(SecondActivity.GOT_DATA, string)
-//        startActivity(newIntent)
         startActivityForResult(newIntent, USER)
     }
 
