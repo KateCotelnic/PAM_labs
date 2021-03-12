@@ -41,7 +41,6 @@ class MyAdapterAll(val arrayList: ArrayList<Recipe>, val context: Context):
         holder.bindItems(arrayList[position])
 
         holder.itemView.setOnClickListener{
-//            if(position == 0){
             val context=holder.itemView.context
             val intent = Intent( context, FourthActivity::class.java)
             intent.putExtra("name", arrayList[position].name)
@@ -50,7 +49,6 @@ class MyAdapterAll(val arrayList: ArrayList<Recipe>, val context: Context):
             intent.putExtra("ingredients", arrayList[position].ingredients)
             intent.putExtra("description", arrayList[position].description)
             context.startActivity(intent)
-//            }
         }
         val add: Button = holder.itemView.findViewById(R.id.add) as Button
         add.setOnClickListener(){
