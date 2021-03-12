@@ -10,9 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class FourthActivity : AppCompatActivity() {
-//        companion object {
-//        val GOT_DATA = Recipe("","",0, arrayListOf(""), arrayListOf(""))
-//    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fourth)
