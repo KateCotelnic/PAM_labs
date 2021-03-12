@@ -7,20 +7,22 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import com.example.myapp.databinding.ActivityThirdBinding
 
 class ThirdActivity : AppCompatActivity() {
     lateinit var option: Spinner
+    private lateinit var binding: ActivityThirdBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_third)
-
-        option = findViewById(R.id.sp_option) as Spinner
+        binding = ActivityThirdBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         var options = arrayOf("main cource", "first course", "second course", "dessert", "drinks")
         var type = "main course"
 
-        option.adapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, options)
+        binding.include2.spOption.adapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, options)
 
         option.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
