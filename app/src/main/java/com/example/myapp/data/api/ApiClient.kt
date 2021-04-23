@@ -27,7 +27,6 @@ object ApiClient {
             .build()
 
         return retrofit
-
     }
-
+    val apiService: ApiService = apiClient().create(ApiService::class.java)
 }

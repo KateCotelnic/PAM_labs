@@ -7,12 +7,12 @@ import com.example.myapp.data.model.RecipeModel
 import com.example.myapp.data.util.Resource
 import kotlinx.coroutines.Dispatchers
 
-class MainViewModel(private val apiService: ApiService) : ViewModel() {
+class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
 
     fun getMyRecipes()= liveData(Dispatchers.IO) {
         emit(Resource.loading(data = null))
         try {
-            emit(Resource.success(data=apiService.getMyRecipes()))
+            emit(Resource.success(data=mainRepository.getMyRecipes()))
         }catch (exception: Exception){
             emit(Resource.error(data=null,message = exception.message?:"Error occured"))
         }
@@ -21,7 +21,7 @@ class MainViewModel(private val apiService: ApiService) : ViewModel() {
     fun addRecipe(recipe: RecipeModel)= liveData(Dispatchers.IO) {
         emit(Resource.loading(data = null))
         try {
-            emit(Resource.success(data=apiService.addRecipe(recipe)))
+            emit(Resource.success(data=mainRepository.addRecipe(recipe)))
         }catch (exception: Exception){
             emit(Resource.error(data=null,message = exception.message?:"Error occured"))
         }
@@ -30,7 +30,7 @@ class MainViewModel(private val apiService: ApiService) : ViewModel() {
     fun getRecipes()= liveData(Dispatchers.IO) {
         emit(Resource.loading(data = null))
         try {
-            emit(Resource.success(data=apiService.getRecipes()))
+            emit(Resource.success(data=mainRepository.getRecipes()))
         }catch (exception: Exception){
             emit(Resource.error(data=null,message = exception.message?:"Error occured"))
         }
@@ -39,7 +39,7 @@ class MainViewModel(private val apiService: ApiService) : ViewModel() {
     fun deleteRecipe(recipe: RecipeModel)= liveData(Dispatchers.IO) {
         emit(Resource.loading(data = null))
         try {
-            emit(Resource.success(data=apiService.deleteRecipe(recipe)))
+            emit(Resource.success(data=mainRepository.deleteRecipe(recipe)))
         }catch (exception: Exception){
             emit(Resource.error(data=null,message = exception.message?:"Error occured"))
         }

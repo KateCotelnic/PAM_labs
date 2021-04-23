@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapp.data.api.ApiClient
+import com.example.myapp.data.api.ApiHelper
 import com.example.myapp.data.api.ApiService
 import com.example.myapp.data.model.RecipeModel
 import com.example.myapp.data.util.Status
@@ -52,10 +53,8 @@ class DeleteActivity : AppCompatActivity() {
 
     private fun setupViewModel() {
         viewModel = ViewModelProviders.of(
-            this,
-            ViewModelFactory(
-                ApiClient.apiClient().create(ApiService::class.java)
-            )
+                this,
+                ViewModelFactory(ApiHelper(ApiClient.apiService))
         ).get(MainViewModel::class.java)
     }
 

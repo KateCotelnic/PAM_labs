@@ -12,6 +12,7 @@ import com.example.myapp.R
 import com.example.myapp.ui.all_recipes.SecondActivity
 import com.example.myapp.ui.add_recipe.ThirdActivity
 import com.example.myapp.data.api.ApiClient
+import com.example.myapp.data.api.ApiHelper
 import com.example.myapp.data.api.ApiService
 import com.example.myapp.data.model.RecipeModel
 import com.example.myapp.data.view_model.MainViewModel
@@ -92,10 +93,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupViewModel() {
         viewModel = ViewModelProviders.of(
-            this,
-                ViewModelFactory(
-                        ApiClient.apiClient().create(ApiService::class.java)
-                )
+                this,
+                ViewModelFactory(ApiHelper(ApiClient.apiService))
         ).get(MainViewModel::class.java)
     }
 

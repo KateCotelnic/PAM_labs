@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.myapp.data.api.ApiClient
+import com.example.myapp.data.api.ApiHelper
 import com.example.myapp.data.api.ApiService
 import com.example.myapp.data.model.RecipeModel
 import com.example.myapp.data.view_model.MainViewModel
@@ -55,9 +56,7 @@ class ThirdActivity : AppCompatActivity() {
     private fun setupViewModel() {
         viewModel = ViewModelProviders.of(
             this,
-                ViewModelFactory(
-                        ApiClient.apiClient().create(ApiService::class.java)
-                )
+                ViewModelFactory(ApiHelper(ApiClient.apiService))
         ).get(MainViewModel::class.java)
     }
 
