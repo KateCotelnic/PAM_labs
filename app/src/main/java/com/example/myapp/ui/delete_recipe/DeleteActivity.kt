@@ -36,9 +36,10 @@ class DeleteActivity : AppCompatActivity() {
         val image = intent.getIntExtra("image",0).toString()
         val ingredients = getIntent().getSerializableExtra("ingredients") as ArrayList<String>
         val description = intent.getStringArrayListExtra("description") as ArrayList<String>
+        var portions = intent.getIntExtra("portions", 1)
 
         binding.yes.setOnClickListener {
-            delete(RecipeModel("kkate", name, type, image, ingredients, description))
+            delete(RecipeModel("kkate", name, type, image, ingredients, description,portions))
             val newIntent = Intent(this, MainActivity::class.java)
             startActivityForResult(newIntent, 0)
         }

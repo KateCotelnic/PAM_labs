@@ -23,6 +23,9 @@ data class RecipeModel (
     var ingredients: ArrayList<String>,
     @Expose
     @SerializedName("description")
-    var description: ArrayList<String>
+    var description: ArrayList<String>,
+    @Expose
+    @SerializedName("portions")
+    var portions: Int
 ) : Parcelable
 
