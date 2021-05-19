@@ -7,6 +7,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapp.R
+import com.example.myapp.data.model.RecipeCalculator
 import com.example.myapp.databinding.ActivityFourthBinding
 import com.example.myapp.ui.add_recipe.ThirdActivity
 import com.example.myapp.ui.all_recipes.SecondActivity
@@ -65,12 +66,24 @@ class FourthActivity : AppCompatActivity() {
         binding.ingredients.adapter = myAdapter
         val description = intent.getStringArrayListExtra("description")
         val adapter = MyAdapter4Recipe(description as ArrayList<String>)
+        var portions = intent.getIntExtra("portions", 1)
+        binding.port.setText(portions.toString() + " portions")
+        val cal = RecipeCalculator.getCal(ingredients)
+        binding.cal.setText(cal.toString() + " cal")
         binding.recipe.layoutManager = LinearLayoutManager(this)
         binding.recipe.adapter = adapter
 
         binding.imageButton.setOnClickListener {
             val newIntent = Intent(this, MainActivity::class.java)
             startActivity(newIntent)
+        }
+        binding.up.setOnClickListener {
+            val pr = binding.port.text.toString().toInt()
+            binding.cal.setText(RecipeCalculator.getCal(cal, portions, pr))
+        }
+        binding.down.setOnClickListener {
+            val pr = binding.port.text.toString().toInt()
+            binding.cal.setText(RecipeCalculator.getCal(cal, portions, pr))
         }
     }
 }

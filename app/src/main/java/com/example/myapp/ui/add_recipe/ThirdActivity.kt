@@ -43,13 +43,25 @@ class ThirdActivity : AppCompatActivity() {
                 type = options.get(position)
             }
         }
-        var name = binding.include.nameOfDish.text.toString()
-        var ingredients = binding.include.insertIngredients.text.toString()
-        var description = binding.include.preparationDescription.text.toString()
+
         binding.save.setOnClickListener {
-            addNewRecipeApi(name, type, ingredients, description)
-            val newIntent = Intent(this, MainActivity::class.java)
-            startActivity(newIntent)
+            var name = binding.include.nameOfDish.text.toString()
+            var ingredients = binding.include.insertIngredients.text.toString()
+            var description = binding.include.preparationDescription.text.toString()
+            if(!InputValidation.check_input(name)){
+                binding.include.nameOfDish.setText("improper name")
+            }
+            if(!InputValidation.check_input(description)){
+                binding.include.preparationDescription.setText("improper description")
+                if(!InputValidation.check_input(ingredients)){
+                    binding.include.nameOfDish.setText("improper ingredients")
+                }
+            }
+            else {
+                addNewRecipeApi(name, type, ingredients, description)
+                val newIntent = Intent(this, MainActivity::class.java)
+                startActivity(newIntent)
+            }
         }
     }
 
@@ -85,7 +97,7 @@ class ThirdActivity : AppCompatActivity() {
         var ingr = ingredients.split(", ")
         var desc = description.split(", ")
         return RecipeModel("kkate", name, type, "image", ingr as ArrayList<String>,
-                desc as ArrayList<String>
+                desc as ArrayList<String>, 1
         )
     }
 

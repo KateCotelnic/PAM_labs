@@ -61,8 +61,9 @@ class MyAdapterMy(val arrayList: ArrayList<RecipeModel>, val context: Context):
             intent.putExtra("image", holder.convert(arrayList[position].image))
             intent.putExtra("ingredients", arrayList[position].ingredients)
             intent.putExtra("description", arrayList[position].description)
+            intent.putExtra("portions", arrayList[position].portions)
             context.startActivity(intent)
-        }
+         }
         holder.itemView.setOnClickListener{
             val context=holder.itemView.context
             val intent = Intent( context, FourthActivity::class.java)
@@ -71,6 +72,7 @@ class MyAdapterMy(val arrayList: ArrayList<RecipeModel>, val context: Context):
             intent.putExtra("image", holder.convert(arrayList[position].image))
             intent.putExtra("ingredients", arrayList[position].ingredients)
             intent.putExtra("description", arrayList[position].description)
+            intent.putExtra("portions", arrayList[position].portions)
             context.startActivity(intent)
         }
     }
